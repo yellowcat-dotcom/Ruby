@@ -102,9 +102,65 @@ class main{
 read_from_txt(String):List<Student>
 write_to_txt(String, List<Student>):
 }
+class StudentListBase{
+students:Array
+this_id:Integer
+data_type: file
+--
+-initialize(file)
++load_from_file(String)
++save_to_file(String)
++student_by_id(Integer):Student
++sort_students():Array
++add_student(student)
++replace_student(Integer, Student)
++delete_student(Integer)
++student_count():Integer
++delete_student(Integer)
++get_k_n_student_short_list(Integer, Integer, DataList: nil):DataList
+-new_this_id()
+--Getters--
+#students():Array
+#this_id():Integer
+-data_type():file
+--Setters--
+#students=(Array)
+#this_id=(Integer)
++data_type=(file)
+}
+class StudentListStrategy{
+
+--
+#string_to_list(String)
+#list_to_string(Array)
+}
+class StudentListTxt{
+
+--
+#string_to_list(String):Array
+#list_to_string(Array):String
+-to_hash(String):Array
+-to_string(Array)
+}
+class StudentListJson{
+
+--
+#string_to_list(String)
+#list_to_string(Array)
+}
+class StudentListYaml{
+
+--
+#string_to_list(String)
+#list_to_string(Array)
+}
 StudentShort ^-- Student
 Data_list ^-- Data_list_student_short
 Data_list_student_short o--StudentShort
 Data_list ..>Data_table
+StudentListStrategy o--StudentListYaml
+StudentListStrategy o--StudentListJson
+StudentListStrategy o--StudentListTxt
+StudentListStrategy --* StudentListBase
 @enduml
 

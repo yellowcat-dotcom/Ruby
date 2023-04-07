@@ -48,11 +48,7 @@ class StudentListBase
     students.reject!{|stud| stud.id == id}
   end
 
-  def get_student_short_count
-    students.size
-  end
-
-  def k_n_student_short_list(k, n, data_list: nil)
+  def get_k_n_student_short_list(k, n, data_list: nil)
     move = (k - 1) * n
     piece = students[move, n].map {|stud| StudentShort.new(stud) }
     return DataListStudentShort.new(piece) if data_list.nil?
