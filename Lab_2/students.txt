@@ -1,3 +1,0 @@
-{"last_name": "Иванов","first_name": "Иван","paternal_name": "Иванович","phone": "+79186963312","id": 7	}
-{"last_name": "Петров","first_name": "Петр","paternal_name": "Петрович","git": "@petr_petrodich","id": 8}
-{"last_name": "Игогок","first_name": "Игог","paternal_name": "Игогович","id": 9,"telegram": "@IGIG_igigig"}
