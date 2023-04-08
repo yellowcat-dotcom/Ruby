@@ -7,6 +7,7 @@ require_relative 'strategy/students_list_txt'
 require_relative 'strategy/students_list_json'
 require_relative 'strategy/students_list_yaml'
 require 'json'
+require 'sqlite3'
 
 def read_from_txt(file_path)
   if !File.exist?(file_path)
@@ -43,6 +44,11 @@ end
 student1 = Student.new(last_name:'Фамилин', first_name:'Имя', paternal_name:'Отчествов', id:1)
 student2 = Student.new(last_name:'Гончаренко', first_name:'Валентина', paternal_name:'Викторовна', id:2, git:'@yellowcat-dotcom', telegram:'@yellowcatdotcom',email:'valentinagoncarenko975@gmail.com')
 student3 = Student.new(last_name:'Минаков',first_name:'Владислав',paternal_name:'Андреевич',phone:'8(918)-686-00-19', id:2, email:"valdos777m@gmail.com", git:'@yellowcat-dotcom', telegram:'@yellowcatdotcom')
+
+db = SQLite3::Database.open './identifier.sqlite'
+sel = db.prepare "Select * from students"
+result = sel.execute
+result.each {|th| puts th.join "\s"}
 
 
 # puts 'Тест(JSON):'
