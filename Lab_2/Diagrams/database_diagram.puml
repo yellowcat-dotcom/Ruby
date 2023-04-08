@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class students {
+id: Integer (PK)
+last_name: varchar
+first_name: varchar
+paternal_name: varchar
+phone: varchar
+git: varchar
+telegram: varchar
+email: varchar
+}
+
+
+@enduml

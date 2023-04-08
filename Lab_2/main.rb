@@ -1,11 +1,11 @@
-require_relative 'student'
-require_relative 'student_short'
-require_relative 'data_table'
-require_relative 'data_list_student_short'
-require_relative 'student_list_base'
-require_relative 'students_list_txt'
-require_relative 'students_list_json'
-require_relative 'students_list_yaml'
+require_relative 'student/student'
+require_relative 'student/student_short'
+require_relative 'data/data_table'
+require_relative 'data/data_list_student_short'
+require_relative 'strategy/student_list_base'
+require_relative 'strategy/students_list_txt'
+require_relative 'strategy/students_list_json'
+require_relative 'strategy/students_list_yaml'
 require 'json'
 
 def read_from_txt(file_path)
@@ -45,35 +45,35 @@ student2 = Student.new(last_name:'Гончаренко', first_name:'Вален�
 student3 = Student.new(last_name:'Минаков',first_name:'Владислав',paternal_name:'Андреевич',phone:'8(918)-686-00-19', id:2, email:"valdos777m@gmail.com", git:'@yellowcat-dotcom', telegram:'@yellowcatdotcom')
 
 
-puts 'Тест(JSON):'
-stud_list_json = StudentListBase.new(StudentListJson.new)
-stud_list_json.add_student(student1)
-stud_list_json.add_student(student2)
-stud_list_json.add_student(student3)
-stud_list_json.save_to_file('students_save.json')
-stud_list_json.load_from_file('students_save.json')
-puts stud_list_json.student_count
-
-
-puts
-puts 'Тест (YAML):'
-stud_list_yaml = StudentListBase.new(StudentListYaml.new)
-stud_list_yaml.add_student(student1)
-stud_list_yaml.add_student(student2)
-stud_list_yaml.add_student(student3)
-stud_list_yaml.save_to_file('students_save.yaml')
-stud_list_yaml.load_from_file('students_save.yaml')
-puts stud_list_yaml.student_count
-
-puts
-puts 'Тест (TXT):'
-stud_list_txt = StudentListBase.new(StudentListTxt.new)
-stud_list_txt.add_student(student1)
-stud_list_txt.add_student(student2)
-stud_list_txt.add_student(student3)
-stud_list_txt.save_to_file('students_save.txt')
-stud_list_txt.load_from_file('students_save.txt')
-puts stud_list_txt.student_count
+# puts 'Тест(JSON):'
+# stud_list_json = StudentListBase.new(StudentListJson.new)
+# stud_list_json.add_student(student1)
+# stud_list_json.add_student(student2)
+# stud_list_json.add_student(student3)
+# stud_list_json.save_to_file('students_save.json')
+# stud_list_json.load_from_file('students_save.json')
+# puts stud_list_json.student_count
+#
+#
+# puts
+# puts 'Тест (YAML):'
+# stud_list_yaml = StudentListBase.new(StudentListYaml.new)
+# stud_list_yaml.add_student(student1)
+# stud_list_yaml.add_student(student2)
+# stud_list_yaml.add_student(student3)
+# stud_list_yaml.save_to_file('students_save.yaml')
+# stud_list_yaml.load_from_file('students_save.yaml')
+# puts stud_list_yaml.student_count
+#
+# puts
+# puts 'Тест (TXT):'
+# stud_list_txt = StudentListBase.new(StudentListTxt.new)
+# stud_list_txt.add_student(student1)
+# stud_list_txt.add_student(student2)
+# stud_list_txt.add_student(student3)
+# stud_list_txt.save_to_file('students_save.txt')
+# stud_list_txt.load_from_file('students_save.txt')
+# puts stud_list_txt.student_count
 
 # Student.valid_email?(student_3.email)
 

@@ -1,4 +1,4 @@
-require_relative 'student'
+require_relative '../student/student'
 class DataTable
   attr_reader  :stroka_count, :stolb_count
 
