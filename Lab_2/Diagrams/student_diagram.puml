@@ -158,9 +158,9 @@ StudentShort ^-- Student
 Data_list ^-- Data_list_student_short
 Data_list_student_short o--StudentShort
 Data_list ..>Data_table
-StudentListStrategy o--StudentListYaml
-StudentListStrategy o--StudentListJson
-StudentListStrategy o--StudentListTxt
+StudentListStrategy ^--StudentListYaml
+StudentListStrategy ^--StudentListJson
+StudentListStrategy ^--StudentListTxt
 StudentListStrategy --* StudentListBase
 @enduml
 
