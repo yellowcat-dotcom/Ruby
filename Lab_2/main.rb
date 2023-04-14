@@ -7,6 +7,7 @@ require_relative 'strategy/student_list_strategy'
 require_relative 'strategy/students_list_txt'
 require_relative 'strategy/students_list_json'
 require_relative 'strategy/students_list_yaml'
+require_relative 'database/Students_list_DB'
 require 'json'
 require 'sqlite3'
 
@@ -45,33 +46,40 @@ end
 student1 = Student.new(last_name:'Фамилин', first_name:'Имя', paternal_name:'Отчествов', id:1)
 student2 = Student.new(last_name:'Гончаренко', first_name:'Валентина', paternal_name:'Викторовна', id:2, git:'@yellowcat-dotcom', telegram:'@yellowcatdotcom',email:'valentinagoncarenko975@gmail.com')
 student3 = Student.new(last_name:'Минаков',first_name:'Владислав',paternal_name:'Андреевич',phone:'8(918)-686-00-19', id:2, email:"valdos777m@gmail.com", git:'@yellowcat-dotcom', telegram:'@yellowcatdotcom')
+#
+db = StudentListDB.new
+puts db.student_by_id(2)
+puts db.count_student
+
+puts db.delete_student(1)
+
 
 # db = SQLite3::Database.open './identifier.sqlite'
 # sel = db.prepare "Select * from students"
 # result = sel.execute
 # result.each {|th| puts th.join "\s"}
-
-
-puts 'Тест(JSON->YAML):'
-stud_list_json = StudentListBase.new(StudentListJson.new)
-stud_list_json.add_student(student1)
-stud_list_json.add_student(student2)
-stud_list_json.add_student(student3)
-stud_list_json.save_to_file('students_save.json')
-stud_list_json.load_from_file('students_save.json')
-stud_list_json.data_type = StudentListYaml.new
-stud_list_json.save_to_file('students_save.yaml')
-
-
-puts 'Тест(YAML->JSON):'
-stud_list_yaml = StudentListBase.new(StudentListYaml.new)
-stud_list_yaml.add_student(student1)
-stud_list_yaml.add_student(student2)
-stud_list_yaml.save_to_file('students_save.yaml')
-stud_list_yaml.load_from_file('students_save.yaml')
-stud_list_yaml.data_type = StudentListJson.new
-stud_list_yaml.save_to_file('students_save.json')
-puts stud_list_yaml
+#
+#
+# puts 'Тест(JSON->YAML):'
+# stud_list_json = StudentListBase.new(StudentListJson.new)
+# stud_list_json.add_student(student1)
+# stud_list_json.add_student(student2)
+# stud_list_json.add_student(student3)
+# stud_list_json.save_to_file('students_save.json')
+# stud_list_json.load_from_file('students_save.json')
+# stud_list_json.data_type = StudentListYaml.new
+# stud_list_json.save_to_file('students_save.yaml')
+#
+#
+# puts 'Тест(YAML->JSON):'
+# stud_list_yaml = StudentListBase.new(StudentListYaml.new)
+# stud_list_yaml.add_student(student1)
+# stud_list_yaml.add_student(student2)
+# stud_list_yaml.save_to_file('students_save.yaml')
+# stud_list_yaml.load_from_file('students_save.yaml')
+# stud_list_yaml.data_type = StudentListJson.new
+# stud_list_yaml.save_to_file('students_save.json')
+# puts stud_list_yaml
 
 
 
