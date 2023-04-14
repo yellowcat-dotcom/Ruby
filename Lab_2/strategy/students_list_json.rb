@@ -1,5 +1,6 @@
 require_relative 'student_list_strategy'
 require 'json'
+require 'yaml'
 
 class StudentListJson < StudentListStrategy
 

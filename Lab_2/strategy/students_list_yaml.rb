@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require_relative 'student_list_strategy'
 require 'yaml'
+require 'json'
 
 class StudentListYaml<StudentListStrategy
   public_class_method :new
