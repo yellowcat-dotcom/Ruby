@@ -154,6 +154,34 @@ class StudentListYaml{
 #string_to_list(String)
 #list_to_string(Array)
 }
+
+class StudentListDB{
+client: SQLite3::Client
+--
++initialize()
++into_hash(Array): Hash
++student_by_id(Integer): Student
++get_k_n_student_short_list(Integer, Integer): DataList
++add_student(Student)
++replace_student(Integer, Student)
++delete_student(Integer)
++count_student(): Integer
+--Getters--
+-students(): SQLite3::Client
+--Setters--
+-students=(SQLite3::Client)
+}
+class DBUniversity{
+instance_mutex: Mutex
+instance: BDUniversity
+client: SQLite3::client
+--
++{static} instance():DBUniversity
+-initialize()
++prepare_exec(String, *Object): SQLite3::Result
++query(String): SQLite3::Result
+}
+StudentListDB o-- DBUniversity
 StudentShort ^-- Student
 Data_list ^-- Data_list_student_short
 Data_list_student_short o--StudentShort
