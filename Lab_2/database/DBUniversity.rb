@@ -1,4 +1,5 @@
 class DBUniversity
+  #Bcgjkmpjdfybt @@ - кринж, так как если данный класс будет наследовать, то переменная класса переопределится с таким же значением
   private_class_method :new
   @instance_mutex = Mutex.new
 

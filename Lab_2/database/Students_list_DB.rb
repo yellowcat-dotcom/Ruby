@@ -32,15 +32,12 @@ class StudentListDB
   end
 
   def add_student(student)
-    st = client.prepare('insert into students (last_name, first_name, paternal_name, phone,
-                          telegram, email, git) VALUES (?, ?, ?, ?, ?, ?, ?)')
-    st.execute(*student_attr(student))
-    self.client.query('SELECT seq from sqlite_sequence where name = "students"').first.first[1]
+    st = client.prepare_exec('insert into students (last_name, first_name, paternal_name, phone,
+                          telegram, email, git) VALUES (?, ?, ?, ?, ?, ?, ?)',*student_attr(student))
   end
 
-
   def replace_student(id_student, student)
-    st ='UPDATE students SET first_name=?, middle_name=?, surname=?, phone_number=?, telegram=?, email=?, git=? WHERE id=?'
+    st ='UPDATE students SET last_name=?, first_name=?, paternal_name=?, phone=?, telegram=?, email=?, git=? WHERE id=?'
     client.prepare_exec(st,*student_attr(student), id_student)
   end
 
