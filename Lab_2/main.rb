@@ -8,6 +8,7 @@ require_relative 'strategy/students_list_txt'
 require_relative 'strategy/students_list_json'
 require_relative 'strategy/students_list_yaml'
 require_relative 'database/Students_list_DB'
+require_relative 'database/window'
 require 'json'
 require 'sqlite3'
 
@@ -48,14 +49,16 @@ student2 = Student.new(last_name:'Гончаренко', first_name:'Вален�
 student3 = Student.new(last_name:'Минаков',first_name:'Владислав',paternal_name:'Андреевич',phone:'8(918)-686-00-19', id:2, email:"valdos777m@gmail.com", git:'@yellowcat-dotcom', telegram:'@yellowcatdotcom')
 
 
-db = StudentListDB.new
-puts db.student_by_id(2)
-puts db.count_student
-db.add_student(student1)
-puts db.count_student
-db.replace_student(6,student2)
-puts db.student_by_id(6)
+# db = StudentListDB.new
+# puts db.student_by_id(2)
+# puts db.count_student
+# db.add_student(student1)
+# puts db.count_student
+# db.replace_student(6,student2)
+# puts db.student_by_id(6)
 
+main_window = Window.new.create
+main_window.show
 
 
 
