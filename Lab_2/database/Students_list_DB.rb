@@ -1,6 +1,6 @@
 require_relative 'DBUniversity'
 require 'json'
-class StudentListDB
+class StudentListDBAdapter
 
   def initialize
     self.client = DBUniversity.instance

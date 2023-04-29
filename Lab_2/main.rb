@@ -57,8 +57,12 @@ student3 = Student.new(last_name:'Минаков',first_name:'Владислав
 # db.replace_student(6,student2)
 # puts db.student_by_id(6)
 
-main_window = Window.new.create
-main_window.show
+db = StudentListDBAdapter.new
+puts db.count_student
+puts db.student_by_id(8)
+
+# main_window = Window.new.create
+# main_window.show
 
 
 
