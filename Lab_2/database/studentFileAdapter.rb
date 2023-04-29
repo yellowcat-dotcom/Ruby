@@ -1,6 +1,7 @@
 require_relative '../strategy/student_list_base'
 class StudentFileAdapter
   def initialize(type_file,file_address)
+    #обращаемся к экземплярам класса StudentListBase
     @file = StudentListBase.new(type_file)
     @file.load_from_file(file_address)
     @file_address = file_address
@@ -22,7 +23,6 @@ class StudentFileAdapter
 
   def replace_student(id_student, student)
     @file.replace_student(id_student, student)
-
     @file.save_to_file(@file_address)
   end
 

@@ -9,6 +9,7 @@ require_relative 'strategy/students_list_json'
 require_relative 'strategy/students_list_yaml'
 require_relative 'database/Students_list_DB'
 require_relative 'database/window'
+require_relative 'database/studentList'
 require 'json'
 require 'sqlite3'
 
@@ -61,8 +62,15 @@ db = StudentListDBAdapter.new
 puts db.count_student
 puts db.student_by_id(8)
 
-# main_window = Window.new.create
-# main_window.show
+puts '------'
+
+db1=StudentList.new(StudentListDBAdapter.new)
+puts db1.count_student
+puts db1.student_by_id(3)
+
+
+main_window = Window.new.create
+main_window.show
 
 
 

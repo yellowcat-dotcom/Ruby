@@ -1,5 +1,4 @@
 class StudentList
-
   def initialize(adapter)
     @adapter = adapter
   end
@@ -18,7 +17,6 @@ class StudentList
 
   def replace_student(id_student, student)
     @adapter.replace_student(id_student, student)
-
   end
 
   def count_student
@@ -28,5 +26,4 @@ class StudentList
   def get_k_n_student_short_list(k,n)
     @adapter.get_k_n_student_short_list(k,n)
   end
-
 end
