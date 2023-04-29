@@ -155,7 +155,7 @@ class StudentListYaml{
 #list_to_string(Array)
 }
 
-class StudentListDB{
+class StudentListDBAdapter{
 client: SQLite3::Client
 --
 +initialize()
@@ -181,7 +181,33 @@ client: SQLite3::client
 +prepare_exec(String, *Object): SQLite3::Result
 +query(String): SQLite3::Result
 }
-StudentListDB o-- DBUniversity
+class StudentFileAdapter{
+file: StudentListBase
+file_path: String
+--
++initialize()
++student_by_id(Integer): Student
++add_student(Student)
++delete_student(Integer)
++replace_student(Integer, Student)
++count_student():Integer
++get_k_n_student_short_list(Integer, Integer):DataList
+}
+class StudentList{
+adapter
+--
++initialize()
++student_by_id(Integer): Student
++add_student(Student)
++delete_student(Integer)
++replace_student(Integer, Student)
++count_student():Integer
++get_k_n_student_short_list(Integer, Integer):DataList
+}
+StudentList *-- StudentListDBAdapter
+StudentList *-- StudentFileAdapter
+StudentFileAdapter o-- StudentListBase
+StudentListDBAdapter o-- DBUniversity
 StudentShort ^-- Student
 Data_list ^-- Data_list_student_short
 Data_list_student_short o--StudentShort
