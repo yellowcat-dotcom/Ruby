@@ -16,7 +16,7 @@ class LogicFromWindow
   def on_datalist_changed(new_table)
     arr = new_table.to_my_array
     arr.map do |row|
-      row[3] = row[3][:phone] || row[3][:telegram] || row[3][:email] unless row[3].nil?
+      row[3] = row[3][:phone] || row[3][:email]  || row[3][:telegram] unless row[3].nil?
     end
     @table.model_array = arr
   end

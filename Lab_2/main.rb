@@ -50,9 +50,12 @@ student1 = Student.new(last_name:'Фамилин', first_name:'Имя', paternal
 student2 = Student.new(last_name:'Гончаренко', first_name:'Валентина', paternal_name:'Викторовна', id:2, git:'@yellowcat-dotcom', telegram:'@yellowcatdotcom',email:'valentinagoncarenko975@gmail.com')
 student3 = Student.new(last_name:'Минаков',first_name:'Владислав',paternal_name:'Андреевич',phone:'8(918)-686-00-19', id:2, email:"valdos777m@gmail.com", git:'@yellowcat-dotcom', telegram:'@yellowcatdotcom')
 
+main_window = Window.new.create
+main_window.show
 
-# db = StudentListDB.new
-# puts db.student_by_id(2)
+# db = StudentListDBAdapter.new
+# db.delete_student(8)
+
 # puts db.count_student
 # db.add_student(student1)
 # puts db.count_student
@@ -70,8 +73,7 @@ student3 = Student.new(last_name:'Минаков',first_name:'Владислав
 # puts db1.student_by_id(3)
 
 
-main_window = Window.new.create
-main_window.show
+
 
 
 

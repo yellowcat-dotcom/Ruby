@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Window {
+     --
+     +create(): Window
+ }
+
+ class LogicFromWindow {
+     -controller: StudentListController
+     -current_page: Integer
+     -total_count: Integer
+     --
+     +create(): HorizontalBox
+     +on_create()
+     +on_datalist_changed(DataTable)
+     +update_student_count(Integer)
+     -sort_by_column(column_index)
+ }
+
+ class StudentListController {
+     -students_list: StudentList
+     -view: LogicWindow
+     -data_list: DataListStudentShort
+     --
+     +show_view()
+     +refresh_data(Integer, Integer)
+     +on_view_created()
+ }
+
+ Window *-- LogicFromWindow
+ LogicFromWindow *-- StudentListController
+ StudentListController *-- LogicFromWindow
+@enduml
