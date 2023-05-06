@@ -3,7 +3,7 @@ require_relative 'window'
 require_relative '../data/data_table'
 class LogicFromWindow
   include Glimmer
-  STUDENTS_PER_PAGE = 15
+  STUDENTS_PER_PAGE = 10
   def initialize
     @controller = StudentListController.new(self)
     @current_page = 1

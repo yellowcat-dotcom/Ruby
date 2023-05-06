@@ -54,7 +54,7 @@ main_window = Window.new.create
 main_window.show
 
 # db = StudentListDBAdapter.new
-# db.delete_student(8)
+# db.delete_student(10)
 
 # puts db.count_student
 # db.add_student(student1)
