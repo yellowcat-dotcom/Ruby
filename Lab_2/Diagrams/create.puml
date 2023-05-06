@@ -1,9 +1,9 @@
 @startuml
  participant "main.rb"                       as main
 
- boundary    "mw: MainWindow"                as mw
- boundary    "lw: LogicWindow"               as lw
- control     "slc: StudentsListController"    as slc
+ boundary    "mw: Window"                as mw
+ boundary    "lw: LogicFormWindow"               as lw
+ control     "slc: Controller"    as slc
  entity      "dlss: DataListStudentShort"    as dlss
  entity      "sl: StudentList"       as sl
  entity      "sldba: StudentListDBAdapter"         as sldba
