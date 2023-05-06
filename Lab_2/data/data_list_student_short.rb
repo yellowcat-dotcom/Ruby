@@ -1,5 +1,5 @@
-require_relative 'data_table'
-class DataListStudentShort<DataTable
+require_relative 'data_list'
+class DataListStudentShort<DataList
 
   def initialize(objects)
     super(objects)

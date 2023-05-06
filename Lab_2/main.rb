@@ -10,6 +10,7 @@ require_relative 'strategy/students_list_yaml'
 require_relative 'database/Students_list_DB'
 require_relative 'database/window'
 require_relative 'database/studentList'
+require_relative 'database/studentFileAdapter'
 require 'json'
 require 'sqlite3'
 
@@ -58,15 +59,15 @@ student3 = Student.new(last_name:'Минаков',first_name:'Владислав
 # db.replace_student(6,student2)
 # puts db.student_by_id(6)
 
-db = StudentListDBAdapter.new
-puts db.count_student
-puts db.student_by_id(8)
-
-puts '------'
-
-db1=StudentList.new(StudentListDBAdapter.new)
-puts db1.count_student
-puts db1.student_by_id(3)
+# db = StudentListDBAdapter.new
+# puts db.count_student
+# puts db.student_by_id(8)
+#
+# puts '------'
+#
+# db1=StudentList.new(StudentListDBAdapter.new)
+# puts db1.count_student
+# puts db1.student_by_id(3)
 
 
 main_window = Window.new.create

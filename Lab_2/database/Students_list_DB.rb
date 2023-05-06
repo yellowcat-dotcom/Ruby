@@ -1,5 +1,6 @@
 require_relative 'DBUniversity'
 require 'json'
+require 'sqlite3'
 class StudentListDBAdapter
 
   def initialize
@@ -24,11 +25,17 @@ class StudentListDBAdapter
     Student.new(**hash)
   end
 
-  def get_k_n_student_short_list(k,n)
-    students = client.prepare('SELECT * FROM students LIMIT ? OFFSET ?').execute((k-1)*n,n)
-    slice = students.map { |h| StudentShort.new(Student.from_hash(h)) }
+  def get_k_n_student_short_list(k,n,data_list=nil )
+    offset = (k - 1) * n
+    students = client.prepare_exec('SELECT * FROM students LIMIT ?, ?', offset, n)
+    slice = students.map { |h|
+      h = h.transform_keys(&:to_sym)
+      StudentShort.new(Student.into_hash(h))
+    }
+    return DataListStudentShort.new(slice) if data_list.nil?
 
-    DataListStudentShort.new(slice)
+    data_list.replace_objects(slice)
+    data_list
   end
 
   def add_student(student)

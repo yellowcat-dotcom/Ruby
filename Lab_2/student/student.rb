@@ -36,7 +36,9 @@ class Student < StudentShort
     self.git = git
     self.set_contacts(phone:phone, telegram:telegram, email:email)
   end
-
+  def self.into_hash(hash)
+    Student.new(**hash)
+  end
   def self.pars_str(str)
     args = JSON.parse(str)
     raise ArgumentError,"The argument must have last_name, first_name and paternal_name" unless
@@ -58,9 +60,9 @@ class Student < StudentShort
   end
 
   def contact
-    return @contact = "phone= #{phone}" unless phone.nil?
-    return @contact = "telegram= #{telegram}" unless telegram.nil?
-    return @contact = "email= #{email}" unless email.nil?
+    return @contact = {phone: phone} unless phone.nil?
+    return @contact = {telegram: telegram} unless telegram.nil?
+    return @contact = {email: email} unless email.nil?
     nil
   end
 
