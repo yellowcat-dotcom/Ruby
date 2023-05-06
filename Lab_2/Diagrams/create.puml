@@ -16,7 +16,7 @@
  lw -> slc : <<new>>(self)
  slc -> dlss : <<new>>(Array)
  dlss --> slc
- slc -> dlss : add_observer(LogicWindow)
+ slc -> dlss : add_observer(LogicFormWindow)
  dlss --> slc
  slc --> lw
  lw --> mw
