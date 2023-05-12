@@ -6,7 +6,8 @@ require_relative '../data/data_list_student_short'
 require_relative 'studentFileAdapter'
 require_relative 'StudentList'
 require_relative '../strategy/students_list_json'
-require 'win32api'
+#require 'win32api'
+require 'glimmer-dsl-libui'
 
 
 class StudentListController
@@ -20,13 +21,19 @@ class StudentListController
   def on_view_created
     #@student_list = StudentList.new(StudentFileAdapter.new(StudentListJson.new, './Lab_2/students.json'))
     @student_list=StudentList.new(StudentListDBAdapter.new)
+
   end
 
   # Отображает представление view.
   def show_view
     @view.create.show
   end
-
+  def show_add_student
+    controller = StudentCreateFormController.new(self)
+    view = StudentCreateForm.new(controller)
+    controller.view=view
+    view.create.show
+  end
   # Oбновляет данные списка студентов.
   # Получает короткий список из БД с помощью get_k_n_student_short_list.
   # Обновляет экземпляр @data_list новым списком.

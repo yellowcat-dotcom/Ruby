@@ -11,6 +11,7 @@ require_relative 'database/Students_list_DB'
 require_relative 'database/window'
 require_relative 'database/studentList'
 require_relative 'database/studentFileAdapter'
+require_relative 'database/student_create_form'
 require 'json'
 require 'sqlite3'
 

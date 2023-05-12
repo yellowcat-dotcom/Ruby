@@ -26,6 +26,7 @@ class StudentListBase
     students.detect { |student_i| student_i.id == student_id}
   end
 
+
   def sort_students
     students.sort_by(&:short_name)
   end
@@ -48,12 +49,11 @@ class StudentListBase
     students.reject!{|stud| stud.id == id}
   end
 
-  def get_k_n_student_short_list(k, n, data_list)
-    move = (k - 1) * n
-    piece = students[move, n].map {|stud| StudentShort.new(stud) }
-    return DataListStudentShort.new(piece) if data_list.nil?
-
-    data_list.append(slice)
+  def get_k_n_student_short_list(page, n, data_list)
+    page_list = students[(page-1)*n, n].map{|st| StudentShort.new(st)}
+    return DataListStudentShort.new(page_list) if data_list.nil?
+    data_list.replace_objects(page_list)
+    data_list
   end
 
   def student_count

@@ -1,6 +1,7 @@
 require_relative 'controller'
 require_relative 'window'
 require_relative '../data/data_table'
+require_relative 'student_create_form'
 class LogicFromWindow
   include Glimmer
   STUDENTS_PER_PAGE = 10
@@ -13,10 +14,13 @@ class LogicFromWindow
     @controller.on_view_created
     @controller.refresh_data(@current_page, STUDENTS_PER_PAGE)
   end
+
+  # Метод наблюдателя datalist
   def on_datalist_changed(new_table)
     arr = new_table.to_my_array
     arr.map do |row|
-      row[3] = row[3][:phone] || row[3][:email]  || row[3][:telegram] unless row[3].nil?
+      row[3] = row[3][:value] unless row[3].nil?
+      #row[3] = row[3][:phone] || row[3][:email]  || row[3][:telegram] unless row[3].nil?
     end
     @table.model_array = arr
   end
@@ -65,15 +69,20 @@ class LogicFromWindow
       }
       #2 область
       vertical_box {
+        stretchy false
         @table = refined_table(
           table_editable: false,
+          filter: lambda do |row_hash, query|
+            utf8_query = query.force_encoding("utf-8")
+            row_hash['Фамилия И. О'].include?(utf8_query)
+          end,
           table_columns: {
             '#' => :text,
             'Фамилия И. О' => :text,
             'Гит' => :text,
             'Контакт' => :text
-          }
-        )
+          },
+          )
 
         @pages = horizontal_box {
           stretchy false
@@ -100,14 +109,20 @@ class LogicFromWindow
       }
       # 3 область
       vertical_box{
-        stretchy true
-        button('Добавить') { stretchy false }
+        stretchy false
+        button('Добавить') {
+          stretchy false
+          on_clicked {
+            @controller.show_add_student
+          }
+        }
         button('Изменить') { stretchy false }
         button('Удалить') { stretchy false }
-        button('Обновить') { stretchy false
-        on_clicked do
-          puts 123
-        end
+        button('Обновить') {
+          stretchy false
+          on_clicked {
+            @controller.refresh_data(@current_page, STUDENTS_PER_PAGE)
+          }
         }
       }
     }

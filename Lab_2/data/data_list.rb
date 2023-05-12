@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require_relative 'data_table'
 class DataList
+  #private_class_method :new
   attr_writer :list
   def initialize(objects)
     self.sel_objects = []
@@ -19,11 +20,17 @@ class DataList
     @observers.each { |observer| observer.on_datalist_changed(get_data) }
   end
   def select(number)
-    raise ArgumentError, "arg 'number' not Integer" if number.class != Integer
+    #raise ArgumentError, "arg 'number' not Integer" if number.class != Integer
     sel_objects.append(number)
   end
 
+  # очистить массив выборки
+  def clear_select
+    self.sel_objects = []
+  end
+
   def get_selected
+    return [] if sel_objects.empty?
     list_id=[]
     sel_objects.each do |i|
       list_id.append(list[i].id)
@@ -32,17 +39,14 @@ class DataList
   end
 
   def get_data
-    result = []
-    id = 0
-    list.each do |o|
-      elem = []
-      elem << id
-      # * необходима так как, если нам передадут [1,2,3], то передастся row.push(1,2,3)
-      elem.push(*table_fields(o))
-      result << elem
-      id += 1
+    index_id=0
+    dt = list.inject([]) do |res, object|
+      row=[index_id]
+      row.append(*table_fields(object))
+      index_id+=1
+      res<<row
     end
-    DataTable.new(result)
+    DataTable.new(dt)
   end
 
   def replace_objects(objects)
