@@ -14,7 +14,7 @@
  sl --> slc
  slc --> lw
  lw -> slc : refresh_data
- slc -> sl : k_n_student_short_list
+ slc -> sl : get_k_n_student_short_list
  sl --> slc
  slc -> lw : update_student_count
  lw --> slc

@@ -28,6 +28,10 @@ class LogicFromWindow
     @total_count = new_cnt
     @page_label.text = "#{@current_page} / #{(@total_count / STUDENTS_PER_PAGE.to_f).ceil}"
   end
+  def delete
+    @controller.delete_selected(@current_page, STUDENTS_PER_PAGE, @table.selection) unless @table.selection.nil?
+    @controller.refresh_data(@current_page, STUDENTS_PER_PAGE)
+  end
   def create
     root_container = horizontal_box {
 
@@ -118,16 +122,28 @@ class LogicFromWindow
         }
         # button('Изменить') { stretchy false }
         # button('Удалить') { stretchy false }
-        button('Изменить ФИО') { stretchy false }
-        button('Изменить git') { stretchy false }
+        # button('Изменить ФИО') { stretchy false }
+        # button('Изменить git') { stretchy false }
+        button('Изменить ФИО') {
+          stretchy false
+          on_clicked {
+            puts "до вызова контроллера"
+            @controller.show_edit_student(@current_page, STUDENTS_PER_PAGE, @table.selection) unless @table.selection.nil?
+            @controller.refresh_data(@current_page, STUDENTS_PER_PAGE)
+          } }
+
+        button('Изменить git') { stretchy false
+        on_clicked{
+          puts 123
+        }}
 
         button('Изменить контакт') { stretchy false }
+
         button('Удалить') {
           stretchy false
 
           on_clicked {
-            @controller.delete_selected(@current_page, STUDENTS_PER_PAGE, @table.selection) unless @table.selection.nil?
-            @controller.refresh_data(@current_page, STUDENTS_PER_PAGE)
+            delete
           }
         }
         button('Обновить') {

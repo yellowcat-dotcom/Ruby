@@ -7,6 +7,7 @@ require_relative 'studentFileAdapter'
 require_relative 'StudentList'
 require_relative '../strategy/students_list_json'
 require_relative 'student_create_form_controller'
+require_relative 'student_edit_form_controller'
 
 #require 'win32api'
 require 'glimmer-dsl-libui'
@@ -38,15 +39,15 @@ class StudentListController
     view.create.show
   end
 
-  # def show_edit_student(current_page, per_page, selected_row)
-  #   student_num = (current_page - 1) * per_page + selected_row
-  #   @data_list.select_elem(student_num)
-  #   student_id = @data_list.selected_id
-  #   controller = StudentEditFormController.new(self, student_id)
-  #   view = StudentCreateForm.new(controller)
-  #   controller.view=view
-  #   view.create.show
-  # end
+  def show_edit_student(current_page, per_page, selected_row)
+    student_num = (current_page - 1) * per_page + selected_row
+    @data_list.select_elem(student_num)
+    student_id = @data_list.selected_id
+    controller = StudentEditFormController.new(self, student_id)
+    view = StudentCreateForm.new(controller)
+    controller.view=view
+    view.create.show
+  end
 
   def delete_selected(current_page, per_page, selected_row)
     #begin

@@ -4,7 +4,7 @@
 
 
 actor       User                        as user
-boundary    "lw: LogicWindow"                   as lw
+boundary    "lw: LogicFormWindow"                   as lw
 boundary    "scf: StudentCreateForm"             as scf
 control     "slc: StudentListController"        as slc
 control     "scfc: StudentCreateFormController"  as scfc
