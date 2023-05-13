@@ -6,6 +6,44 @@ class Window {
      +create(): Window
  }
 
+class StudentCreateForm {
+    -controller: StudentCreateFormController
+    -student: Student
+    -entries: Hash
+    --
+    +initialize(controller, student = nil)
+    +create(): Window
+    +on_create()
+    +set_value()
+    +make_readonly()
+    +close()
+}
+
+class StudentList {
+-data_adapter
+     +initialize()
+     +student_by_id(Integer): Student
+     +k_n_student_short_list(Integer, Integer): DataList
+     +add_student(Student)
+     +replace_student(Integer, Student)
+     +remove_student(Integer)
+     +student_count(): Integer
+}
+
+
+class StudentCreateFormController {
+    -view: StudentCreateForm
+    -controller
+    -student_list: StudentList
+    --
+    +initialize(controller)
+    +set_view(view)
+    +on_view_created()
+    +process_fields(Hash)
+    +on_db_conn_error()
+}
+
+
  class LogicFromWindow {
      -controller: StudentListController
      -current_page: Integer
@@ -27,6 +65,13 @@ class Window {
      +refresh_data(Integer, Integer)
      +on_view_created()
  }
+
+
+StudentCreateForm *-u- StudentCreateFormController
+StudentCreateFormController *-- StudentCreateForm
+StudentCreateFormController o-- StudentList
+StudentListController o-- StudentList
+
 
  Window *-- LogicFromWindow
  LogicFromWindow *-- StudentListController
