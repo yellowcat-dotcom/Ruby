@@ -4,7 +4,7 @@
 
 
  actor       User                        as user
- boundary    "lw: LogicWindow"                   as lw
+ boundary    "lw: LogicFormWindow"                   as lw
  control     "slc: StudentListController"        as slc
  entity      "sl: StudentList"           as sl
 
