@@ -19,10 +19,10 @@ class StudentListDBAdapter
   end
   def student_by_id(id_student)
     hash = client.prepare_exec('SELECT * FROM students WHERE id = ?', id_student).first
-    hash=into_hash(hash)
+    hash=from_array_to_hash(hash)
     return nil if hash.nil?
 
-    Student.new(**hash)
+    Student.from_hash(hash)
   end
 
   def get_k_n_student_short_list(k,n,data_list=nil )

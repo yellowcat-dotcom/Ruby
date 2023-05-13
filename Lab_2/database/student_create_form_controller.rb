@@ -15,14 +15,6 @@ class StudentCreateFormController
     end
   end
 
-  # def save_student(student)
-  #   if @existing_student.nil?
-  #     @student_rep.add_student(student)
-  #   else
-  #     @student_rep.replace_student(@existing_student[:id], student)
-  #   end
-  # end
-
   def view=(view)
     @view = view
   end
@@ -31,6 +23,7 @@ class StudentCreateFormController
     student = Student.new(**fields)
     @student_rep.add_student(student)
     @view.close
+    @controller.view.refresh_current_page
   end
 
   def on_db_conn_error(e)

@@ -6,7 +6,7 @@ require_relative '../student/student'
 
 class StudentCreateForm
   include Glimmer
-  puts "hello"
+  #puts "hello"
 
   def initialize(controller,existing_student = nil)
     @existing_student = existing_student.to_hash unless existing_student.nil?
@@ -57,7 +57,7 @@ class StudentCreateForm
 
   def make_readonly(*fields)
     fields.each do |field|
-      field.read_only = true
+      @entries[field].read_only = true
     end
   end
   def close
