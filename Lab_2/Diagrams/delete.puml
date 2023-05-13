@@ -10,7 +10,7 @@
 
  user -> lw : Удалить
  lw -> slc : delete_selected
- slc -> sl : remove_student
+ slc -> sl : delete_student
  sl --> slc
  slc --> lw
  lw -> slc : refresh_data

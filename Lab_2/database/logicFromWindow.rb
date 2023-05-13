@@ -32,7 +32,7 @@ class LogicFromWindow
     root_container = horizontal_box {
 
       # 1 область
-      vertical_box {
+      vertical_box  {
         form {
           stretchy false
 
@@ -69,7 +69,7 @@ class LogicFromWindow
       }
       #2 область
       vertical_box {
-        stretchy false
+        stretchy true
         @table = refined_table(
           table_editable: false,
           filter: lambda do |row_hash, query|
@@ -109,7 +109,7 @@ class LogicFromWindow
       }
       # 3 область
       vertical_box{
-        stretchy false
+        stretchy true
         button('Добавить') {
           stretchy false
           on_clicked {
